@@ -2,6 +2,7 @@ import { Component } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './ContactFilter/ContactFiltr';
 import ContactList from './ContactList/ContactList';
+import Container from './Container/Container';
 import css from 'index.css';
 
 class App extends Component {
@@ -15,9 +16,9 @@ class App extends Component {
     filter: '',
   };
 
-  // Добавляет контакт (желательно сократить или вынести)
+  // Додаємо контакт
   addContact = newContact => {
-    // Проверка на дубликат
+    // Перевіряємо контакт на дублікат
     const duplicateName = this.state.contacts.find(
       contact => contact.name === newContact.name
     );
@@ -32,12 +33,12 @@ class App extends Component {
     }));
   };
 
-  // Следит за полем фильтрации и пишет в стейт
+  // Слідкуємо за полем фільтрації та записуємо у стейт
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
   };
 
-  // Фильтрует и возвращает результат фильтра
+  // Фільтруємо та повертаємо результат фільтру
   filterContacts = () => {
     const { contacts, filter } = this.state;
 
@@ -48,7 +49,7 @@ class App extends Component {
     );
   };
 
-  // Удаляет контакт
+  // Видаляємо контакт
   deleteContact = id => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
@@ -60,7 +61,7 @@ class App extends Component {
     const filteredResults = this.filterContacts();
 
     return (
-      <>
+      <Container>
         <h1 className={css.title}>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2 className={css.title}>Contacts</h2>
@@ -69,7 +70,7 @@ class App extends Component {
           contacts={filteredResults}
           onDeleteContact={this.deleteContact}
         />
-      </>
+      </Container>
     );
   }
 }

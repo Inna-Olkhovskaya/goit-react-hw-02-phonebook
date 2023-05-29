@@ -3,7 +3,7 @@ import ContactItem from '../ContactItem/ContactItem';
 
 import css from './ContactList.module.css';
 
-// Принимает все контакты и пробрасывает дальше метод для удаления контакта
+// Приймає усі контакти та пробрасує далі Медод видалення контакта
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul className={css.list}>

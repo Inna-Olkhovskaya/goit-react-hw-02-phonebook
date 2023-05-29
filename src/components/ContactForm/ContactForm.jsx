@@ -5,18 +5,18 @@ import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 
 class ContactForm extends Component {
-  // PropTypes как статическое свойство
+  // PropTypes, як статична властивість
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
   };
 
-  // Стейт формы
+  // Стейт форми
   state = {
     name: '',
     number: '',
   };
 
-  // Метод, наблюдающий за инпутами и записывающий в стейт их значения
+  // Метод слідкує за інпутами та записує у стейт їх значення
   hanldeChange = event => {
     const { name, value } = event.currentTarget;
 
@@ -25,7 +25,7 @@ class ContactForm extends Component {
     });
   };
 
-  // Метод на отправке формы. Формирует из стейта контакт и передает во внешний метод
+  // Метод відправки форми. Формує із стейта контакт та передає у зовнішній метод
   hanldeSubmit = event => {
     event.preventDefault();
 
@@ -35,12 +35,13 @@ class ContactForm extends Component {
       number: this.state.number,
     };
 
-    this.props.onSubmit(contact); // Внешний метод в пропсах класса
+    // Зовнішній метод у пропсах класа
+    this.props.onSubmit(contact);
 
     this.resetForm();
   };
 
-  // Сброс полей формы (после отправки)
+  // Зброс полів форми (після відправки)
   resetForm = () => {
     this.setState({
       id: '',
@@ -58,10 +59,10 @@ class ContactForm extends Component {
             type="text"
             name="name"
             className={css.input}
-            value={this.state.name} // Пишем значение в стейт
-            onChange={this.hanldeChange} // Наблюдающий метод
+            value={this.state.name} // Записуємо значення у  стейт
+            onChange={this.hanldeChange} // Слідкуючий метод
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
         </label>
@@ -71,10 +72,10 @@ class ContactForm extends Component {
             type="tel"
             name="number"
             className={css.input}
-            value={this.state.number} // Пишем значение в стейт
-            onChange={this.hanldeChange} // Наблюдающий метод
+            value={this.state.number} // Записуємо значення у  стейт
+            onChange={this.hanldeChange} // Слідкуючий метод
             pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
-            title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </label>

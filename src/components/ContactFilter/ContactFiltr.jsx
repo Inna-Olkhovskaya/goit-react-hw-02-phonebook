@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-
 import css from './ContactFilter.module.css';
 
-// Принимает значение с поля фильтра и метод пишущий в стейт
+// Приймаємо значення поля фільтра та Метод,записуючий у стейт
 const Filter = ({ value, onChange }) => {
   return (
     <label className={css.label}>
@@ -14,7 +13,7 @@ const Filter = ({ value, onChange }) => {
         value={value}
         onChange={onChange}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
     </label>

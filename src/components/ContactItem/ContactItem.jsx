@@ -1,6 +1,6 @@
 import css from './ContactItem.module.css';
 
-// Принимает один контакт и метод для удаления контакта
+// Приймає один контакт та Метод для видалення контакта
 const ContactItem = ({ contact, onDeleteContact }) => {
   return (
     <li className={css.item}>
@@ -11,7 +11,7 @@ const ContactItem = ({ contact, onDeleteContact }) => {
       <button
         className={css.button}
         type="button"
-        onClick={() => onDeleteContact(contact.id)} // Метод на клике, принимает ID контакта
+        onClick={() => onDeleteContact(contact.id)} // Метод на клікі, приймає ID контакта
       >
         Delete
       </button>
